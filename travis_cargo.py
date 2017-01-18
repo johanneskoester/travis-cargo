@@ -228,6 +228,7 @@ def raw_coverage(use_sudo, verify, link_dead_code, test_args,
     print(merge_msg)
     kcov_args = [kcov, '--merge'] + kcov_merge_args + [kcov_merge_dir]
     kcov_args += ('target/kcov-' + b for b in test_binaries)
+    print(" ".join(kcov_args))
     run(*kcov_args)
 
 def coverage(version, manifest, args):
