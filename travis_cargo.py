@@ -155,7 +155,7 @@ def build_kcov(use_sudo, verify):
         if verify:
             deps += ' binutils-dev'
     init = deps + '''
-    wget https://github.com/SimonKagstrom/kcov/archive/master.zip
+    wget https://github.com/SimonKagstrom/kcov/archive/v31.zip
     unzip master.zip
     mv kcov-master kcov
     mkdir kcov/build
