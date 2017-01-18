@@ -32,8 +32,8 @@ def run_output(*args, **kwargs):
 
     try:
         output = subprocess.check_output(args,
-                                         stderr=sys.stderr,
-                                         env = env)
+                                         stderr=subprocess.STDOUT,
+                                         env=env)
     except subprocess.CalledProcessError as e:
         print(e.output.decode('utf-8'))
         exit(e.returncode)
