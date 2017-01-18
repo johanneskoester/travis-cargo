@@ -156,8 +156,8 @@ def build_kcov(use_sudo, verify):
             deps += ' binutils-dev'
     init = deps + '''
     wget https://github.com/SimonKagstrom/kcov/archive/v31.zip
-    unzip master.zip
-    mv kcov-master kcov
+    unzip v31.zip
+    mv kcov-31 kcov
     mkdir kcov/build
     '''
     for line in init.split('\n'):
