@@ -220,7 +220,9 @@ def raw_coverage(use_sudo, verify, link_dead_code, test_args,
         exclude_pattern_arg = '--exclude-pattern=/.cargo'
         if exclude_pattern:
             exclude_pattern_arg += ',{}'.format(exclude_pattern)
-        kcov_args += [exclude_pattern_arg, 'target/kcov-' + binary,
+        outdir = 'target/kcov-' + binary
+        os.makedirs(outdir)
+        kcov_args += [exclude_pattern_arg, outdir,
                       'target/debug/' + binary]
         print('Running: {}'.format(' '.join(kcov_args)))
         run(*kcov_args, env={'LD_LIBRARY_PATH': ld_library_path})
