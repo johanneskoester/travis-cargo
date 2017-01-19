@@ -2,6 +2,10 @@ from __future__ import print_function
 import argparse
 import os, sys, subprocess, json, re
 
+
+KCOV_RELEASE = "33"
+
+
 def run(*args, **kwargs):
     # use the current environment, but override the vars the caller
     # specified
@@ -155,11 +159,11 @@ def build_kcov(use_sudo, verify):
         if verify:
             deps += ' binutils-dev'
     init = deps + '''
-    wget https://github.com/SimonKagstrom/kcov/archive/v33.zip
-    unzip v33.zip
-    mv kcov-33 kcov
+    wget https://github.com/SimonKagstrom/kcov/archive/v{ver}.zip
+    unzip v{ver}.zip
+    mv kcov-{ver} kcov
     mkdir kcov/build
-    '''
+    '''.format(ver=KCOV_RELEASE)
     for line in init.split('\n'):
         line = line.strip()
         if line:
